@@ -1,0 +1,12 @@
+{
+  "packages": {
+    "a": {
+      "package-name": "pack-a"
+    },
+    "b": {
+      "component": "comp-b"
+    },
+    "c": {
+    }
+  }
+}
