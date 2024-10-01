@@ -5,11 +5,15 @@
   "tag-separator": "@",
   "packages": {
     "a": {
+      "path": "a",
       "package-name": "pack-a"
     },
     "b": {
+      "path": "b",
       "component": "comp-b"
     },
-    "c": {}
+    "c": {
+      "path": "c"
+    }
   }
 }
