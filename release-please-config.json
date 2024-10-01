@@ -10,10 +10,12 @@
     },
     "hello-b": {
       "path": "hello-b",
-      "component": "comp-b"
+      "package-name": "pack-b"
+
     },
     "hello-c": {
-      "path": "hello-c"
+      "path": "hello-c",
+      "package-name": "pack-c"
     }
   }
 }
