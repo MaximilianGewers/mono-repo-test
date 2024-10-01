@@ -1,4 +1,5 @@
 {
+  "separate-pull-requests": true,
   "packages": {
     "a": {
       "package-name": "pack-a"
