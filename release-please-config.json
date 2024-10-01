@@ -4,16 +4,16 @@
   "include-component-in-tag": true,
   "tag-separator": "@",
   "packages": {
-    "a": {
-      "path": "a",
+    "hello-a": {
+      "path": "hello-a",
       "package-name": "pack-a"
     },
-    "b": {
-      "path": "b",
+    "hello-b": {
+      "path": "hello-b",
       "component": "comp-b"
     },
-    "c": {
-      "path": "c"
+    "hello-c": {
+      "path": "hello-c"
     }
   }
 }
