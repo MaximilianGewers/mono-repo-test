@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0](https://github.com/MaximilianGewers/mono-repo-test/compare/v1.0.0...v1.1.0) (2024-10-01)
+
+
+### Features
+
+* second 16 ([1b135a3](https://github.com/MaximilianGewers/mono-repo-test/commit/1b135a36e7a827c39f51c7153e2d3019c3a6b387))
+* second 17 ([5799828](https://github.com/MaximilianGewers/mono-repo-test/commit/579982860b9b6353fa098de87536ca9b94556b58))
+* second 18 ([c1af64c](https://github.com/MaximilianGewers/mono-repo-test/commit/c1af64c306770318739de3d570700482e35292c0))
+
 ## 1.0.0 (2024-10-01)
 
 
