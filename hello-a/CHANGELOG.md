@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.1.0...pack-a@v1.2.0) (2024-10-02)
+
+
+### Features
+
+* cleanup ([5312a8b](https://github.com/MaximilianGewers/mono-repo-test/commit/5312a8b48e6ea3fd999b76ed88dc6a4204971510))
+
 ## [1.1.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.0.0...pack-a@v1.1.0) (2024-10-02)
 
 
