@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-b@v1.0.0...pack-b@v1.1.0) (2024-10-02)
+
+
+### Features
+
+* changes in b ([dd0cf4a](https://github.com/MaximilianGewers/mono-repo-test/commit/dd0cf4a671b07b944537341f31b163c60268ca01))
+
 ## 1.0.0 (2024-10-02)
 
 
