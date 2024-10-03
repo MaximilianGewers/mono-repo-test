@@ -27,20 +27,27 @@ jobs:
           for path in $paths_released; do
             echo "Processing path: $path"
 
+            # Dynamically access the major and minor outputs for each path
+            major=$(eval echo '${{ steps.release.outputs.'$path'--major }}')
+            minor=$(eval echo '${{ steps.release.outputs.'$path'--minor }}')
+
+            echo "Major version for $path: $major"
+            echo "Minor version for $path: $minor"
+
             # Git config
             git config user.name github-actions[bot]
             git config user.email 41898282+github-actions[bot]@users.noreply.github.com
             git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/MaximilianGewers/mono-repo-test.git"
 
             # Delete tags if they exist
-            git tag -d "${path}@v${{ steps.release.outputs.major }}" || true
-            git tag -d "${path}@v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}" || true
-            git push origin ":${path}@v${{ steps.release.outputs.major }}" || true
-            git push origin ":${path}@v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}" || true
+            git tag -d "${path}@v${major}" || true
+            git tag -d "${path}@v${major}.${minor}" || true
+            git push origin ":${path}@v${major}" || true
+            git push origin ":${path}@v${major}.${minor}" || true
 
             # Create and push new tags
-            git tag -a "${path}@v${{ steps.release.outputs.major }}" -m "Release ${path}@v${{ steps.release.outputs.major }}"
-            git tag -a "${path}@v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}" -m "Release ${path}@v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}"
-            git push origin "${path}@v${{ steps.release.outputs.major }}"
-            git push origin "${path}@v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}"
+            git tag -a "${path}@v${major}" -m "Release ${path}@v${major}"
+            git tag -a "${path}@v${major}.${minor}" -m "Release ${path}@v${major}.${minor}"
+            git push origin "${path}@v${major}"
+            git push origin "${path}@v${major}.${minor}"
           done
