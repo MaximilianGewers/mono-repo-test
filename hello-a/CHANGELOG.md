@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.18.0...pack-a@v1.19.0) (2024-10-03)
+
+
+### Features
+
+* rel ([aaf4a84](https://github.com/MaximilianGewers/mono-repo-test/commit/aaf4a84a7de721486d639e2fd2e1a4d45c6f58e7))
+
 ## [1.18.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.17.0...pack-a@v1.18.0) (2024-10-03)
 
 
