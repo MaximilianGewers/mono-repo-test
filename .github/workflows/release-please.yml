@@ -27,7 +27,7 @@ jobs:
           echo "paths_released: $paths_released"
           
           echo "Setting release outputs."
-          release_outputs=${{ toJson(steps.release.outputs) }}
+          release_outputs=${{ toJSON(steps.release.outputs) }}
           
           for path in $paths_released; do
             echo "Processing path: $path"
