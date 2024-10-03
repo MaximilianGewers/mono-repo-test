@@ -23,27 +23,30 @@ jobs:
         run: |
           echo "Parsing paths_released..."
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
+          echo "paths_released: $paths_released"
+          echo "Full release outputs: ${{ steps.release.outputs }}"
           for path in $paths_released; do
             echo "Processing path: $path"
-    
+
             # Extract major and minor versions dynamically for each path
+            echo "Processing output: ${{ steps.release.outputs }}' | jq -c '.'"
             major=$(echo '${{ steps.release.outputs }}' | jq -r ".\"${path}--major\"")
             minor=$(echo '${{ steps.release.outputs }}' | jq -r ".\"${path}--minor\"")
-    
+
             echo "Major version: $major"
             echo "Minor version: $minor"
-    
+
             # Git config
             git config user.name github-actions[bot]
             git config user.email 41898282+github-actions[bot]@users.noreply.github.com
             git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/MaximilianGewers/mono-repo-test.git"
-    
+
             # Delete tags if they exist
             git tag -d "${path}@v${major}" || true
             git tag -d "${path}@v${major}.${minor}" || true
             git push origin ":${path}@v${major}" || true
             git push origin ":${path}@v${major}.${minor}" || true
-    
+
             # Create and push new tags
             git tag -a "${path}@v${major}" -m "Release ${path}@v${major}"
             git tag -a "${path}@v${major}.${minor}" -m "Release ${path}@v${major}.${minor}"
