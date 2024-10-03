@@ -17,6 +17,10 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
       - uses: actions/checkout@v4
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
       - name: Tag major and minor versions
         id: parse_paths
         if: ${{ steps.release.outputs.releases_created == 'true' }}
@@ -26,9 +30,6 @@ jobs:
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
           echo "paths_released: $paths_released"
           
-          xyz=$(echo '${{ steps.release.outputs }}' | jq -r '.')
-          echo "output: xyz"
-      
           for path in $paths_released; do
             echo "Processing path: $path"
 
