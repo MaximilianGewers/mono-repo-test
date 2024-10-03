@@ -1,0 +1,26 @@
+{
+  "release": {
+    "outputs": {
+      "releases_created": "true",
+      "hello-a--release_created": "true",
+      "hello-a--id": "178279479",
+      "hello-a--name": "pack-a: v1.18.0",
+      "hello-a--tag_name": "pack-a@v1.18.0",
+      "hello-a--sha": "a46cdd87ba0085d06526d260f3bd7b05bd0006ad",
+      "hello-a--body": "## [1.18.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.17.0...pack-a@v1.18.0) (2024-10-03)\n\n\n### Features\n\n* rel ([4486ebf](https://github.com/MaximilianGewers/mono-repo-test/commit/4486ebff32ba94a2545f45e556e814cdf147c831))",
+      "hello-a--html_url": "https://github.com/MaximilianGewers/mono-repo-test/releases/tag/pack-a%40v1.18.0",
+      "hello-a--draft": "false",
+      "hello-a--upload_url": "https://uploads.github.com/repos/MaximilianGewers/mono-repo-test/releases/178279479/assets{?name,label}",
+      "hello-a--path": "hello-a",
+      "hello-a--version": "1.18.0",
+      "hello-a--major": "1",
+      "hello-a--minor": "18",
+      "hello-a--patch": "0",
+      "paths_released": "[\"hello-a\"]",
+      "prs_created": "false"
+    },
+    "outcome": "success",
+    "conclusion": "success"
+  }
+}
+

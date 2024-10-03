@@ -17,10 +17,6 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
       - uses: actions/checkout@v4
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
       - name: Tag major and minor versions
         id: parse_paths
         if: ${{ steps.release.outputs.releases_created == 'true' }}
@@ -30,12 +26,15 @@ jobs:
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
           echo "paths_released: $paths_released"
           
+          echo "Setting release outputs."
+          release_outputs=${{ toJson(steps.release.outputs) }}
+          
           for path in $paths_released; do
             echo "Processing path: $path"
 
             # Extract major and minor versions dynamically for each path
-            major=$(echo "${{ steps.release.outputs }}" | jq -r ".\"${path}--major\"")
-            minor=$(echo "${{ steps.release.outputs }}" | jq -r ".\"${path}--minor\"")
+            major=$(release_outputs | jq --arg path "$path" '.release.outputs[$path + "--major"]')
+            minor=$(release_outputs | jq --arg path "$path" '.release.outputs[$path + "--minor"]')
 
             echo "Major version: $major"
             echo "Minor version: $minor"
