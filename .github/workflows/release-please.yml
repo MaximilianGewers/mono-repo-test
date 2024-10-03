@@ -22,14 +22,17 @@ jobs:
         if: ${{ steps.release.outputs.releases_created == 'true' }}
         run: |
           echo "Parsing paths_released..."
+          
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
           echo "paths_released: $paths_released"
-          echo "Full release outputs: ${{ toJSON(steps.release.outputs) }}"
+          
+          xyz=$(echo '${{ steps.release.outputs }}' | jq -r '.')
+          echo "output: xyz"
+      
           for path in $paths_released; do
             echo "Processing path: $path"
 
             # Extract major and minor versions dynamically for each path
-            echo "Processing output: ${{ toJSON(steps.release.outputs) }}"
             major=$(echo "${{ steps.release.outputs }}" | jq -r ".\"${path}--major\"")
             minor=$(echo "${{ steps.release.outputs }}" | jq -r ".\"${path}--minor\"")
 
