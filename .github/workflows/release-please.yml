@@ -23,22 +23,13 @@ jobs:
         if: ${{ steps.release.outputs.releases_created == 'true' }}
         run: |
           echo "Parsing paths_released..."
-          # Fetch paths from the paths_released output
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
-          
           for path in $paths_released; do
             echo "Processing path: $path"
 
-            # Dynamically construct the major and minor output environment variables
-            major_key="${path}--major"
-            minor_key="${path}--minor"
-
-            # Access the outputs by evaluating the corresponding environment variable names
-            major=$(echo "${{ steps.release.outputs[$major_key] }}")
-            minor=$(echo "${{ steps.release.outputs[$minor_key] }}")
-
-            echo "Major version for $path: $major"
-            echo "Minor version for $path: $minor"
+            # Extract major and minor versions
+            major=$(eval echo \${{ steps.release.outputs.${path}--major }})
+            minor=$(eval echo \${{ steps.release.outputs.${path}--minor }})
 
             # Git config
             git config user.name github-actions[bot]
