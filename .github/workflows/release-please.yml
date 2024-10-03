@@ -27,13 +27,13 @@ jobs:
           for path in $paths_released; do
             echo "Processing path: $path"
 
-            # GitHub Actions environment variables allow dynamic access to outputs
-            major_var="${path}--major"
-            minor_var="${path}--minor"
+            # Dynamically access the major and minor version for each path using Bash variable substitution
+            major_key="${path}--major"
+            minor_key="${path}--minor"
 
-            # Access the dynamic outputs via environment variable substitution
-            major="${{ steps.release.outputs[major_var] }}"
-            minor="${{ steps.release.outputs[minor_var] }}"
+            # Use eval to dynamically access the outputs for major and minor
+            major=$(eval echo "\${{ steps.release.outputs.${major_key} }}")
+            minor=$(eval echo "\${{ steps.release.outputs.${minor_key} }}")
 
             echo "Major version for $path: $major"
             echo "Minor version for $path: $minor"
