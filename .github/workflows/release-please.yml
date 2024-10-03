@@ -29,7 +29,7 @@ jobs:
             echo "Processing path: $path"
 
             # Extract major and minor versions dynamically for each path
-            echo "Processing output: ${{ steps.release.outputs }}' | jq -c '.'"
+            echo "Processing output: ${{ fromJSON(steps.release.outputs) }}' | jq -c '.'"
             major=$(echo '${{ steps.release.outputs }}' | jq -r ".\"${path}--major\"")
             minor=$(echo '${{ steps.release.outputs }}' | jq -r ".\"${path}--minor\"")
 
