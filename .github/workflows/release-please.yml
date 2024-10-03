@@ -17,7 +17,7 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
       - name: Show release output
-        run: echo "Release created: ${{ steps.release.outputs.release_created }}"
+        run: echo "Release created = ${{ steps.release.outputs.release_created }}"
       - uses: actions/checkout@v4
       - name: tag major and minor versions
         if: ${{ steps.release.outputs.release_created }} // echo this
