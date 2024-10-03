@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Tag major and minor versions
         id: parse_paths
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.releases_created == 'true' }}
         run: |
           echo "Parsing paths_released..."
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
@@ -29,7 +29,7 @@ jobs:
             echo "Processing path: $path"
 
             # Extract major and minor versions dynamically for each path
-            echo "Processing output: ${{ fromJSON(steps.release.outputs) }}"
+            echo "Processing output: ${{toJSON(steps.release.outputs)}}"
             major=$(echo '${{ steps.release.outputs }}' | jq -r ".\"${path}--major\"")
             minor=$(echo '${{ steps.release.outputs }}' | jq -r ".\"${path}--minor\"")
 
