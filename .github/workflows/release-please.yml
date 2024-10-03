@@ -16,8 +16,10 @@ jobs:
         id: release
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-      - name: Show release output
+      - name: Show release output created
         run: echo "Release created ${{ steps.release.outputs.release_created }}"
+      - name: Show release output path
+        run: echo "Release created ${{ steps.release.outputs.path }}"
       - uses: actions/checkout@v4
       - name: tag major and minor versions
         if: ${{ steps.release.outputs.release_created == 'true' }}
