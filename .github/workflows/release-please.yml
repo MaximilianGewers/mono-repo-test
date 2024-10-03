@@ -34,8 +34,8 @@ jobs:
             echo "Processing path: $rel_path"
 
             # Extract major and minor versions dynamically for each path
-            major=$(echo $release_outputs | jq --arg rel_path "$rel_path" '.[$rel_path + "--major"]')
-            minor=$(echo $release_outputs | jq --arg rel_path "$rel_path" '.[$rel_path + "--minor"]')
+            major=$(echo $release_outputs | jq -r --arg rel_path "$rel_path" '.[$rel_path + "--major"]')
+            minor=$(echo $release_outputs | jq -r --arg rel_path "$rel_path" '.[$rel_path + "--minor"]')
 
             echo "Major version: $major"
             echo "Minor version: $minor"
@@ -46,14 +46,14 @@ jobs:
             git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/MaximilianGewers/mono-repo-test.git"
 
             # Delete tags if they exist
-            git tag -d "${path}@v${major}" || true
-            git tag -d "${path}@v${major}.${minor}" || true
-            git push origin ":${path}@v${major}" || true
-            git push origin ":${path}@v${major}.${minor}" || true
+            git tag -d "${rel_path}@v${major}" || true
+            git tag -d "${rel_path}@v${major}.${minor}" || true
+            git push origin ":${rel_path}@v${major}" || true
+            git push origin ":${rel_path}@v${major}.${minor}" || true
 
             # Create and push new tags
-            git tag -a "${path}@v${major}" -m "Release ${path}@v${major}"
-            git tag -a "${path}@v${major}.${minor}" -m "Release ${path}@v${major}.${minor}"
-            git push origin "${path}@v${major}"
-            git push origin "${path}@v${major}.${minor}"
+            git tag -a "${rel_path}@v${major}" -m "Release ${rel_path}@v${major}"
+            git tag -a "${rel_path}@v${major}.${minor}" -m "Release ${rel_path}@v${major}.${minor}"
+            git push origin "${rel_path}@v${major}"
+            git push origin "${rel_path}@v${major}.${minor}"
           done
