@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.11.0...pack-a@v1.12.0) (2024-10-03)
+
+
+### Features
+
+* rel ([94957a1](https://github.com/MaximilianGewers/mono-repo-test/commit/94957a15e5b7f259bc6f38a75b1df46a2de40630))
+
 ## [1.11.0](https://github.com/MaximilianGewers/mono-repo-test/compare/pack-a@v1.10.0...pack-a@v1.11.0) (2024-10-03)
 
 
