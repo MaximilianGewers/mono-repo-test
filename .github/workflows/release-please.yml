@@ -16,11 +16,10 @@ jobs:
         id: release
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-      - name: Show release output created
-        run: echo "Release created ${{ steps.release.outputs.releases_created}}"
       - uses: actions/checkout@v4
       - name: Tag major and minor versions
         id: parse_paths
+        if: ${{ steps.release.outputs.releases_created }}
         run: |
           echo "Parsing paths_released..."
           paths_released=$(echo '${{ steps.release.outputs.paths_released }}' | jq -r '.[]')
